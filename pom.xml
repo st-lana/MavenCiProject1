@@ -15,12 +15,12 @@
             <version>5.8.2</version>
             <scope>test</scope>
         </dependency>
-<!--        <dependency>-->
-<!--            <groupId>org.junit.jupiter</groupId>-->
-<!--            <artifactId>junit-jupiter</artifactId>-->
-<!--            <version>RELEASE</version>-->
-<!--            <scope>test</scope>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.junit.jupiter</groupId>-->
+        <!--            <artifactId>junit-jupiter</artifactId>-->
+        <!--            <version>RELEASE</version>-->
+        <!--            <scope>test</scope>-->
+        <!--        </dependency>-->
     </dependencies>
 
     <build>
@@ -52,7 +52,31 @@
                             <goal>report</goal>
                         </goals>
                     </execution>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
                 </executions>
+                <configuration>
+                    <rules>
+                        <rule>
+                            <element>BUNDLE</element>
+                            <limits>
+                                <limit>
+                                    <counter>INSTRUCTION</counter>
+                                    <value>COVEREDRATIO</value>
+                                    <minimum>1.00</minimum>
+                                </limit>
+                                <limit>
+                                    <counter>CLASS</counter>
+                                    <value>MISSEDCOUNT</value>
+                                    <maximum>0</maximum>
+                                </limit>
+                            </limits>
+                        </rule>
+                    </rules>
+                </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
